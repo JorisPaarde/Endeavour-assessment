@@ -1,0 +1,11 @@
+<h2>My Art</h2>
+
+<ul class="art">
+    <li [class.selected]="object === selectedArtObject"
+    *ngFor="let object of artobjects"
+    (click)="onSelect(object)">
+    <span class="badge">{{object.id}}</span> {{object.title}}
+    </li>
+</ul>
+
+<app-art-object-detail [artObject]="selectedArtObject"></app-art-object-detail>

@@ -1,5 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ArtObject } from '../art-object';
+import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
+
+import { ArtObject } from '../interfaces/art-object';
+import { ArtObjectService } from '../services/art-object.service';
 
 @Component({
   selector: 'app-art-object-detail',
@@ -8,11 +12,26 @@ import { ArtObject } from '../art-object';
 })
 export class ArtObjectDetailComponent implements OnInit {
 
-  @Input() artObject?: ArtObject;
+  artObject: ArtObject | undefined;
 
-  constructor() { }
+  constructor(
+    private route: ActivatedRoute,
+    private artObjectService: ArtObjectService,
+    private location: Location
+  ) { }
 
   ngOnInit(): void {
+    // this.getArtObject();
+  }
+
+  // getArtObject(): void {
+  //   const id = Number(this.route.snapshot.paramMap.get('id'));
+  //   this.artObjectService.getArtObject(id)
+  //     .subscribe(artObject => this.artObject = artObject);
+  // }
+
+  goBack(): void {
+    this.location.back();
   }
 
 }

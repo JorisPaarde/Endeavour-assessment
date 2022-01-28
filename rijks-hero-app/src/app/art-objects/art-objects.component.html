@@ -2,7 +2,7 @@
 
 <ul class="art">
     <li [class.selected]="object === selectedArtObject"
-    *ngFor="let object of artobjects"
+    *ngFor="let object of artObjects"
     (click)="onSelect(object)">
     <span class="badge">{{object.id}}</span> {{object.title}}
     </li>

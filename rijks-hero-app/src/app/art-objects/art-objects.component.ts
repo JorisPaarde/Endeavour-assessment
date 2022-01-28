@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ArtObject } from '../art-object';
-import { ART_OBJECTS } from '../mock-art-objects';
+import { ArtObjectService } from '../art-object.service'
 
 @Component({
   selector: 'app-art-objects',
@@ -11,7 +11,12 @@ import { ART_OBJECTS } from '../mock-art-objects';
 
 export class ArtObjectsComponent implements OnInit {
 
-  artobjects = ART_OBJECTS;
+  artObjects: ArtObject[] = [];
+
+  getArtObjects(): void {
+    this.artObjectService.getArtObjects()
+    .subscribe(artObjects => this.artObjects = artObjects)
+  }
 
   selectedArtObject?: ArtObject;
 
@@ -19,9 +24,11 @@ export class ArtObjectsComponent implements OnInit {
     this.selectedArtObject = artObject;
   }
 
-  constructor() { }
+  constructor(private artObjectService: ArtObjectService) {
+  }
 
   ngOnInit(): void {
+    this.getArtObjects();
   }
 
 }

@@ -12,6 +12,7 @@ export class ArtObjectService {
 
   getArtObjects(): Observable<ArtObject[]> {
     const artObjects =  of(ART_OBJECTS);
+    this.messageService.add("ArtObjectService: fetched ArtObjects");
     return artObjects;
   }
 

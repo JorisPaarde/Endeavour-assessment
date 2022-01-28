@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ArtObject } from '../art-object';
 import { ArtObjectService } from '../art-object.service'
+import { MessageService } from '../message.service';
 
 @Component({
   selector: 'app-art-objects',
@@ -13,18 +14,19 @@ export class ArtObjectsComponent implements OnInit {
 
   artObjects: ArtObject[] = [];
 
-  getArtObjects(): void {
-    this.artObjectService.getArtObjects()
-    .subscribe(artObjects => this.artObjects = artObjects)
+  selectedArtObject?: ArtObject;
+
+  constructor(private artObjectService: ArtObjectService, private messageService: MessageService) {
   }
 
-  selectedArtObject?: ArtObject;
+  getArtObjects(): void {
+    this.artObjectService.getArtObjects()
+      .subscribe(artObjects => this.artObjects = artObjects)
+  }
 
   onSelect(artObject: ArtObject): void {
     this.selectedArtObject = artObject;
-  }
-
-  constructor(private artObjectService: ArtObjectService) {
+    this.messageService.add(`HeroesComponent: Selected hero id=${artObject.id}`);
   }
 
   ngOnInit(): void {

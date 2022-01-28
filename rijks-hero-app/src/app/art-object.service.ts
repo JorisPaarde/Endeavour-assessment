@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { ArtObject } from './art-object';
 import { ART_OBJECTS } from './mock-art-objects';
 import { Observable, of } from 'rxjs';
+import { MessageService } from './message.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,5 +15,5 @@ export class ArtObjectService {
     return artObjects;
   }
 
-  constructor() { }
+  constructor(private messageService: MessageService) { }
 }

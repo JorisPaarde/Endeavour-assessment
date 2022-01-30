@@ -1,9 +1,12 @@
-<div *ngIf="artObject">
-    <h2>{{artObject.title | uppercase}} Details</h2>
-    <!-- <div><span>id: </span>{{artObject.id}}</div> -->
-    <div>
-        <label for="art-piece-title">Art piece title: </label>
-        <input id="art-piece-title" [(ngModel)]="artObject.title" placeholder="title">
-    </div>
-</div>
 <button (click)="goBack()">go back</button>
+<div *ngIf="artObject">
+    <h2>{{artObject.title | uppercase}}</h2>
+    <a href="{{ artObject.webImage.url }}" target="_blank" rel="noopener noreferrer">Link naar de afbeelding</a>
+    <p>{{ artObject.dating.presentingDate }}</p>
+    <h3 *ngIf="artObject.plaqueDescriptionDutch">Omschrijving:</h3>
+    <p>{{ artObject.plaqueDescriptionDutch }}</p>
+    <h3 *ngIf="artObject.description">Wat is er te zien op dit doek:</h3>
+    <p>{{ artObject.description }}</p>
+   
+</div>
+

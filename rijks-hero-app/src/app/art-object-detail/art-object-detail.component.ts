@@ -2,7 +2,6 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
-import { ArtObject } from '../interfaces/art-object';
 import { ArtObjectService } from '../services/art-object.service';
 import { ArtObjectDetail } from '../interfaces/art-object-detail';
 import { RootArtObject } from '../interfaces/root-art-object';

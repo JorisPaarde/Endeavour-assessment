@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 import { ArtObjectsComponent } from './art-objects/art-objects.component';
 import { ArtObjectDetailComponent } from './art-object-detail/art-object-detail.component';
 import { MessagesComponent } from './messages/messages.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { SearchFormComponent } from './search-form/search-form.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +16,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     ArtObjectsComponent,
     ArtObjectDetailComponent,
     MessagesComponent,
-    DashboardComponent
+    SearchFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -24,7 +24,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [ArtObjectsComponent,],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

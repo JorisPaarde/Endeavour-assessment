@@ -14,10 +14,9 @@ import { RootArtObject } from '../interfaces/root-art-object';
 export class ArtObjectService {
 
   apiKey:string = 'lFy1FNRx'
-  searchString: string = ''
 
-  getArtObjects(): Observable<RootArtObjects> {
-    return this.http.get<RootArtObjects>(`https://www.rijksmuseum.nl/api/nl/collection?key=${this.apiKey}&involvedMaker=Rembrandt+van+Rijn`)
+  getArtObjects(searchString: string): Observable<RootArtObjects> {
+    return this.http.get<RootArtObjects>(`https://www.rijksmuseum.nl/api/nl/collection?key=${this.apiKey}&q=${searchString}`)
       .pipe(
         tap(_ => this.log('fetched objects data')),
         catchError(this.handleError<RootArtObjects>('getArtObjects', undefined))

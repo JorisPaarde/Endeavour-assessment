@@ -1,0 +1,18 @@
+<form>
+    <!-- (ngSubmit)="onSubmit()" #form="ngForm" -->
+    <div class="form-group">
+        <label for="searchString">Search query</label>
+        <input required minlength="3" ngModel class="form-control" #searchString="ngModel" type="searchString"
+            name="searchString" id="searchString">
+        <div class="alert alert-danger" *ngIf="searchString.touched && !searchString.valid">
+            <div *ngIf="searchString.errors">
+                <div *ngIf="searchString.errors['required']">Please type in a search query</div>
+                <div *ngIf="searchString.errors['minlength']">
+                    Please use more than {{ searchString.getError('minlength').requiredLength }} characters
+                </div>
+            </div>
+        </div>
+    </div>
+    <button class="btn btn-primary" (click)="search(searchString.value)">Search
+    </button>
+</form>

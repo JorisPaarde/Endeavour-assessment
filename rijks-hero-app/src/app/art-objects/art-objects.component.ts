@@ -17,13 +17,13 @@ export class ArtObjectsComponent implements OnInit {
   constructor(private artObjectService: ArtObjectService) {
   }
 
-  onGetArtObjects(): void {
-    this.artObjectService.getArtObjects()
+  onGetArtObjects(searchString: string): void {
+    this.artObjectService.getArtObjects(searchString)
       .subscribe(returnRoot => this.artObjects = returnRoot.artObjects)
   }
 
   ngOnInit(): void {
-    this.onGetArtObjects();
+    this.onGetArtObjects('rembrand');
   }
 
 }

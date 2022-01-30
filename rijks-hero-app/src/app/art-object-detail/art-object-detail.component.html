@@ -1,6 +1,6 @@
 <div *ngIf="artObject">
     <h2>{{artObject.title | uppercase}} Details</h2>
-    <div><span>id: </span>{{artObject.id}}</div>
+    <!-- <div><span>id: </span>{{artObject.id}}</div> -->
     <div>
         <label for="art-piece-title">Art piece title: </label>
         <input id="art-piece-title" [(ngModel)]="artObject.title" placeholder="title">

@@ -1,5 +1,5 @@
 export interface Links {
-    self: string
-    web: string
+    self: string;
+    web: string;
   }
   

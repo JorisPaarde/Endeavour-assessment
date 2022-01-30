@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
-import { Observable, of } from 'rxjs';
+import { catchError, Observable, of, tap } from 'rxjs';
 import { MessageService } from './message.service';
-import { ArtObject } from '../interfaces/art-object';
+import { RootArtObjects } from '../interfaces/root-art-objects';
+import { RootArtObject } from '../interfaces/root-art-object';
 
 
 @Injectable({
@@ -12,28 +13,43 @@ import { ArtObject } from '../interfaces/art-object';
 
 export class ArtObjectService {
 
-  // getArtObjects(): Observable<ArtObject[]> {
-  //   const artObjects =  of(ART_OBJECTS);
-  //   this.messageService.add("ArtObjectService: fetched ArtObjects");
-  //   return artObjects;
-  // }
-  getArtObjects(){
-    this.http.get('https://www.rijksmuseum.nl/api/nl/collection?key=lFy1FNRx&involvedMaker=Rembrandt+van+Rijn').subscribe((response)=>(
-      alert(JSON.stringify(response))
-    ))
+  apiKey:string = 'lFy1FNRx'
+  searchString: string = ''
+
+  getArtObjects(): Observable<RootArtObjects> {
+    return this.http.get<RootArtObjects>(`https://www.rijksmuseum.nl/api/nl/collection?key=${this.apiKey}&involvedMaker=Rembrandt+van+Rijn`)
+      .pipe(
+        tap(_ => this.log('fetched objects data')),
+        // catchError(this.handleError<Root>('getArtObjects', {}))
+      );
   }
 
-  // getArtObject(id: number): Observable<ArtObject> {
-  //   const artObject = ART_OBJECTS.find(h => h.id === id)!;
-  //   this.messageService.add(`art-object-service: fetched hero id=${id}`);
-  //   return of(artObject);
+  getArtObject(id:string): Observable<RootArtObject> {
+    return this.http.get<RootArtObject>(`https://www.rijksmuseum.nl/api/nl/collection/${id}?key=${this.apiKey}`)
+      .pipe(
+        tap(_ => this.log(`fetched ${id} object data`)),
+        // catchError(this.handleError<Root>('getArtObjects', {}))
+      );
+  }
+
+  // private handleError<T>(operation = 'operation', result?: T) {
+  //   return (error: any): Observable<T> => {
+
+  //     // TODO: send the error to remote logging infrastructure
+  //     console.error(error); // log to console instead
+
+  //     // TODO: better job of transforming error for user consumption
+  //     this.log(`${operation} failed: ${error.message}`);
+
+  //     // Let the app keep running by returning an empty result.
+  //     return of(result as T);
+  //   };
   // }
 
   constructor(
     private http: HttpClient,
     private messageService: MessageService) {
-      this.getArtObjects();
-     }
+  }
 
   /** Log a HeroService message with the MessageService */
   private log(message: string) {

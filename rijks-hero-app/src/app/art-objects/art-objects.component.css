@@ -3,8 +3,9 @@
   margin: 0 0 2em 0;
   list-style-type: none;
   padding: 0;
-  width: 15em;
+  width: 55em;
 }
+
 .art li {
   position: relative;
   cursor: pointer;
@@ -47,8 +48,12 @@
   left: -1px;
   top: -4px;
   height: 1.8em;
-  min-width: 16px;
+  min-width: 8em;
   text-align: right;
   margin-right: .8em;
   border-radius: 4px 0 0 4px;
+}
+
+.header-image{
+  width: 80vw;
 }

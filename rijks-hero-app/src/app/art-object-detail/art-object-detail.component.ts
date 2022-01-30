@@ -4,6 +4,8 @@ import { Location } from '@angular/common';
 
 import { ArtObject } from '../interfaces/art-object';
 import { ArtObjectService } from '../services/art-object.service';
+import { ArtObjectDetail } from '../interfaces/art-object-detail';
+import { RootArtObject } from '../interfaces/root-art-object';
 
 @Component({
   selector: 'app-art-object-detail',
@@ -12,7 +14,8 @@ import { ArtObjectService } from '../services/art-object.service';
 })
 export class ArtObjectDetailComponent implements OnInit {
 
-  artObject: ArtObject | undefined;
+  rootArtObject: RootArtObject | undefined;
+  artObject: ArtObjectDetail | undefined;
 
   constructor(
     private route: ActivatedRoute,
@@ -21,14 +24,16 @@ export class ArtObjectDetailComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // this.getArtObject();
+    this.onGetArtObject();
   }
 
-  // getArtObject(): void {
-  //   const id = Number(this.route.snapshot.paramMap.get('id'));
-  //   this.artObjectService.getArtObject(id)
-  //     .subscribe(artObject => this.artObject = artObject);
-  // }
+  onGetArtObject(): void {
+    const id = String(this.route.snapshot.paramMap.get('id'));
+    this.artObjectService.getArtObject(id)
+      .subscribe(rootArtObject => {
+      this.rootArtObject = rootArtObject
+      this.artObject = rootArtObject.artObject});
+  }
 
   goBack(): void {
     this.location.back();

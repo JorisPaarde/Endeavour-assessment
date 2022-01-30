@@ -1,5 +1,5 @@
 export interface CountFacets {
-    hasimage: number
-    ondisplay: number
+    hasimage: number;
+    ondisplay: number;
   }
   

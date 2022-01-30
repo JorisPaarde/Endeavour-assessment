@@ -1,5 +1,5 @@
 export interface Facet2 {
-    key: string
-    value: number
+    key: string;
+    value: number;
   }
   

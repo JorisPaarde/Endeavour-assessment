@@ -1,5 +1,6 @@
 import { Component, NgModule, OnInit } from '@angular/core';
 import { ArtObjectsComponent } from '../art-objects/art-objects.component';
+import { ArtObjectService } from '../services/art-object.service';
 
 @Component({
   selector: 'search-form',
@@ -17,7 +18,7 @@ export class SearchFormComponent implements OnInit {
     this.artObjectsComponent.onGetArtObjects(searchString)}
 
   constructor(private artObjectsComponent: ArtObjectsComponent) { }
-
+  
   ngOnInit(): void {
   }
 

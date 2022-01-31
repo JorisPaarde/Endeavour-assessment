@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ArtObject } from '../interfaces/art-object';
 import { ArtObjectService } from '../services/art-object.service';
 
@@ -14,12 +14,16 @@ export class ArtObjectsComponent implements OnInit {
 
   artObjects: ArtObject[] = [];
 
-  constructor(private artObjectService: ArtObjectService) {
+  constructor(private cdRef: ChangeDetectorRef, private artObjectService: ArtObjectService) {
   }
 
   onGetArtObjects(searchString: string): void {
+    console.log('searching for:'+ searchString)
     this.artObjectService.getArtObjects(searchString)
-      .subscribe(returnRoot => this.artObjects = returnRoot.artObjects)
+      .subscribe(returnRoot => {
+        this.artObjects = returnRoot.artObjects;
+        this.cdRef.detectChanges();
+      });
   }
 
   ngOnInit(): void {

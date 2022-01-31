@@ -1,7 +1,14 @@
-<h1>{{title}}</h1>
-<!-- <nav>
+<div class="container">
+  <h1 class="text-center">{{title}}</h1>
+  <p class="text-center"> Welcome to {{title}} where you can search the rijksmuseum's database.</p>
+  <!-- <nav>
   <a routerLink="/art-objects">Art objects</a>
 </nav> -->
-<search-form></search-form>
-<router-outlet></router-outlet>
-<!-- <app-messages></app-messages> -->
+  <div class="row justify-content-center">
+    <div class="col-8">
+      <search-form></search-form>
+    </div>
+  </div>
+  <router-outlet></router-outlet>
+  <!-- <app-messages></app-messages> -->
+</div>

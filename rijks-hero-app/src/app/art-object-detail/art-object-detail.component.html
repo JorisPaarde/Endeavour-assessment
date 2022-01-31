@@ -1,12 +1,16 @@
-<button (click)="goBack()">go back</button>
-<div *ngIf="artObject">
-    <h2>{{artObject.title | uppercase}}</h2>
-    <a href="{{ artObject.webImage.url }}" target="_blank" rel="noopener noreferrer">Link naar de afbeelding</a>
-    <p>{{ artObject.dating.presentingDate }}</p>
-    <h3 *ngIf="artObject.plaqueDescriptionDutch">Omschrijving:</h3>
-    <p>{{ artObject.plaqueDescriptionDutch }}</p>
-    <h3 *ngIf="artObject.description">Waar kijk ik naar?</h3>
-    <p>{{ artObject.description }}</p>
-   
-</div>
 
+<button class="btn btn-secondary go-back" (click)="goBack()">go back</button>
+
+<div *ngIf="artObject">
+    <div class="row justify-content-center">
+        <div class="col-10">
+            <h2 class="text-center">{{ artObject.title | uppercase }}</h2>
+            <img class="img-fluid" src="{{ artObject.webImage.url }}" alt="{{ artObject.title }}">
+            <p>{{ artObject.dating.presentingDate }}</p>
+            <h3 *ngIf="artObject.plaqueDescriptionDutch">Omschrijving:</h3>
+            <p>{{ artObject.plaqueDescriptionDutch }}</p>
+            <h3 *ngIf="artObject.description">Waar kijk ik naar?</h3>
+            <p>{{ artObject.description }}</p>
+        </div>
+    </div>
+</div>

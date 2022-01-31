@@ -1,10 +1,10 @@
-<h2>Results for your query:</h2>
-
+<h2 class="text-center">Results for your query:</h2>
+<p class="text-center">click on the title </p>
 <ul class="art">
     <li *ngFor="let object of artObjects">
-        <img class="header-image" src="{{object.headerImage.url}}" alt="{{object.title}}">
         <a routerLink="/detail/{{object.objectNumber}}">
-            <span class="badge">{{object.objectNumber}}</span> {{object.title}}
+            <span class="badge">detailed information on</span> {{object.longTitle}}
         </a>
+        <img class="header-image" src="{{object.headerImage.url}}" alt="{{object.title}}">
     </li>
 </ul>

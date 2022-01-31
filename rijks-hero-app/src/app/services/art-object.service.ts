@@ -5,6 +5,7 @@ import { catchError, Observable, of, tap } from 'rxjs';
 import { MessageService } from './message.service';
 import { RootArtObjects } from '../interfaces/root-art-objects';
 import { RootArtObject } from '../interfaces/root-art-object';
+import { environment } from 'src/environments/environment';
 
 
 @Injectable({
@@ -13,9 +14,10 @@ import { RootArtObject } from '../interfaces/root-art-object';
 
 export class ArtObjectService {
 
-  apiKey:string = 'lFy1FNRx'
+  private apiKey = environment.apiKey;
 
   getArtObjects(searchString: string): Observable<RootArtObjects> {
+    console.log('observable created for: '+ searchString)
     return this.http.get<RootArtObjects>(`https://www.rijksmuseum.nl/api/nl/collection?key=${this.apiKey}&q=${searchString}`)
       .pipe(
         tap(_ => this.log('fetched objects data')),

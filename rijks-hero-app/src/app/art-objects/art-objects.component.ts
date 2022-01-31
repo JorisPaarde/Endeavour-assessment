@@ -28,7 +28,7 @@ export class ArtObjectsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.onGetArtObjects('rembrand');
+    this.onGetArtObjects('rembrandt');
   }
 
 }

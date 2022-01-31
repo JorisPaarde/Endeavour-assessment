@@ -4,9 +4,9 @@
 <div *ngIf="artObject">
     <div class="row justify-content-center">
         <div class="col-10">
-            <h2 class="text-center">{{ artObject.title | uppercase }}</h2>
+            <h2 class="text-center">{{ artObject.title }}</h2>
             <img class="img-fluid" src="{{ artObject.webImage.url }}" alt="{{ artObject.title }}">
-            <p>{{ artObject.dating.presentingDate }}</p>
+            <p>{{ artObject.scLabelLine }}</p>
             <h3 *ngIf="artObject.plaqueDescriptionDutch">Omschrijving:</h3>
             <p>{{ artObject.plaqueDescriptionDutch }}</p>
             <h3 *ngIf="artObject.description">Waar kijk ik naar?</h3>

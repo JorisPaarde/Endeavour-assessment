@@ -22,6 +22,7 @@ export class ArtObjectsComponent implements OnInit {
     this.artObjectService.getArtObjects(searchString)
       .subscribe(returnRoot => {
         this.artObjects = returnRoot.artObjects;
+        console.log(this.artObjects);
         this.cdRef.detectChanges();
       });
   }

@@ -41,7 +41,7 @@ See here:
 
 The search box returns the values in console, but results are not rendered to the page.
 
-![screenshot-image](readme-images\search-screenshot.png)
+![screenshot-image](readme-images/search-screenshot.png)
 
 
 <hr>
